@@ -1,0 +1,295 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  color: white;
+  min-height: 100vh;
+}
+
+/* ========== HEADER ========== */
+header {
+  padding: 20px;
+  background: rgba(0, 0, 0, 0.5);
+  backdrop-filter: blur(10px);
+  text-align: center;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+}
+
+header img {
+  max-height: 60px;
+  filter: drop-shadow(0 0 10px rgba(255, 255, 255, 0.3));
+  animation: float 3s ease-in-out infinite;
+}
+
+@keyframes float {
+  0%, 100% { transform: translateY(0px); }
+  50% { transform: translateY(-10px); }
+}
+
+/* ========== BIENVENIDA ========== */
+#bienvenida {
+  text-align: center;
+  margin: 30px 0;
+  padding: 20px;
+}
+
+#bienvenida img {
+  width: 180px;
+  height: 180px;
+  border-radius: 50%;
+  border: 5px solid rgba(255, 255, 255, 0.3);
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.3);
+  animation: pulse 2s ease-in-out infinite;
+  object-fit: cover;
+}
+
+@keyframes pulse {
+  0%, 100% { transform: scale(1); }
+  50% { transform: scale(1.05); }
+}
+
+#bienvenida h2 {
+  font-size: 2.5em;
+  margin: 20px 0 10px;
+  text-shadow: 2px 2px 10px rgba(0, 0, 0, 0.5);
+  animation: fadeInDown 1s ease;
+}
+
+#bienvenida p {
+  font-size: 1.2em;
+  opacity: 0.9;
+  text-shadow: 1px 1px 5px rgba(0, 0, 0, 0.3);
+}
+
+@keyframes fadeInDown {
+  from {
+    opacity: 0;
+    transform: translateY(-20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* ========== SEGUIR VIENDO ========== */
+#seguirViendo {
+  padding: 15px 20px;
+  text-align: center;
+  margin: 20px auto;
+  max-width: 600px;
+}
+
+#seguirViendo.oculto {
+  display: none;
+}
+
+#seguirViendo h3 {
+  margin-bottom: 10px;
+  font-size: 1.3em;
+}
+
+#btnSeguir {
+  background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+  border: none;
+  color: white;
+  padding: 15px 30px;
+  font-size: 1em;
+  border-radius: 30px;
+  cursor: pointer;
+  box-shadow: 0 5px 20px rgba(245, 87, 108, 0.4);
+  transition: all 0.3s ease;
+  font-weight: bold;
+}
+
+#btnSeguir:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 8px 30px rgba(245, 87, 108, 0.6);
+}
+
+#btnSeguir:active {
+  transform: translateY(-1px);
+}
+
+/* ========== VISOR DE VIDEO ========== */
+#visor {
+  padding: 20px;
+  text-align: center;
+  margin: 20px auto;
+  max-width: 1200px;
+}
+
+#tituloActual {
+  font-size: 1.8em;
+  margin-bottom: 15px;
+  text-shadow: 2px 2px 10px rgba(0, 0, 0, 0.5);
+  padding: 0 10px;
+}
+
+#player {
+  width: 95%;
+  max-width: 900px;
+  height: 500px;
+  border: none;
+  border-radius: 15px;
+  box-shadow: 0 10px 50px rgba(0, 0, 0, 0.5);
+  background: #000;
+}
+
+@media (max-width: 768px) {
+  #player {
+    height: 300px;
+  }
+}
+
+/* ========== CATÁLOGO ========== */
+#catalogo {
+  padding: 20px;
+  max-width: 1400px;
+  margin: 0 auto;
+}
+
+#catalogo h3 {
+  font-size: 2em;
+  text-align: center;
+  margin-bottom: 30px;
+  text-shadow: 2px 2px 10px rgba(0, 0, 0, 0.5);
+}
+
+#grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+  gap: 20px;
+  padding: 10px;
+}
+
+@media (max-width: 768px) {
+  #grid {
+    grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+    gap: 15px;
+  }
+}
+
+/* ========== TARJETAS DE ANIME ========== */
+.card {
+  cursor: pointer;
+  text-align: center;
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(10px);
+  border-radius: 15px;
+  padding: 10px;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  border: 2px solid rgba(255, 255, 255, 0.1);
+  position: relative;
+  overflow: hidden;
+}
+
+.card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+  transition: left 0.5s;
+}
+
+.card:hover::before {
+  left: 100%;
+}
+
+.card img {
+  width: 100%;
+  height: 220px;
+  object-fit: cover;
+  border-radius: 12px;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+  transition: transform 0.3s ease;
+}
+
+.card:hover {
+  transform: translateY(-10px) scale(1.03);
+  box-shadow: 0 15px 40px rgba(0, 0, 0, 0.4);
+  border-color: rgba(255, 255, 255, 0.3);
+}
+
+.card:hover img {
+  transform: scale(1.05);
+}
+
+.card span {
+  display: block;
+  margin-top: 10px;
+  font-size: 14px;
+  font-weight: 600;
+  line-height: 1.3;
+  text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.5);
+  min-height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* ========== FOOTER ========== */
+footer {
+  padding: 30px;
+  text-align: center;
+  background: rgba(0, 0, 0, 0.5);
+  backdrop-filter: blur(10px);
+  margin-top: 40px;
+  font-size: 1.1em;
+  box-shadow: 0 -4px 20px rgba(0, 0, 0, 0.3);
+}
+
+footer::before {
+  content: '✨';
+  margin-right: 10px;
+}
+
+footer::after {
+  content: '✨';
+  margin-left: 10px;
+}
+
+/* ========== ANIMACIONES EXTRAS ========== */
+.card {
+  animation: fadeIn 0.5s ease-in-out;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* ========== SCROLLBAR PERSONALIZADO ========== */
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+::-webkit-scrollbar-track {
+  background: rgba(0, 0, 0, 0.3);
+}
+
+::-webkit-scrollbar-thumb {
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  border-radius: 5px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: linear-gradient(135deg, #764ba2 0%, #667eea 100%);
+}
